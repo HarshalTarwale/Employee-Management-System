@@ -1,10 +1,18 @@
+localStorage.clear()
+
+
 const employees = [
   {
     id: 1,
     firstName: "Aarav",
     email: "employee1@example.com",
     password: "123",
-    taskCount: 5,
+    taskCounts: {
+      active: 3,      // ids: 1,2,3
+      newTask: 1,     // id: 1 (upcoming date)
+      completed: 1,   // id: 4
+      failed: 1       // id: 5
+    },
     tasks: [
       {
         id: 1,
@@ -15,6 +23,7 @@ const employees = [
         active: true,
         complicated: true,
         failed: false,
+        status: "newTask"
       },
       {
         id: 2,
@@ -25,6 +34,7 @@ const employees = [
         active: true,
         complicated: false,
         failed: false,
+        status: "active"
       },
       {
         id: 3,
@@ -35,6 +45,7 @@ const employees = [
         active: true,
         complicated: false,
         failed: false,
+        status: "active"
       },
       {
         id: 4,
@@ -45,6 +56,7 @@ const employees = [
         active: false,
         complicated: true,
         failed: false,
+        status: "completed"
       },
       {
         id: 5,
@@ -55,6 +67,7 @@ const employees = [
         active: false,
         complicated: false,
         failed: true,
+        status: "failed"
       },
     ],
   },
@@ -63,7 +76,12 @@ const employees = [
     firstName: "Ishaan",
     email: "employee2@example.com",
     password: "123",
-    taskCount: 6,
+    taskCounts: {
+      active: 4,      // 1,2,3,6
+      newTask: 1,     // 1
+      completed: 1,   // 5
+      failed: 1       // 4
+    },
     tasks: [
       {
         id: 1,
@@ -74,6 +92,7 @@ const employees = [
         active: true,
         complicated: true,
         failed: false,
+        status: "newTask"
       },
       {
         id: 2,
@@ -84,6 +103,7 @@ const employees = [
         active: true,
         complicated: true,
         failed: false,
+        status: "active"
       },
       {
         id: 3,
@@ -94,6 +114,7 @@ const employees = [
         active: true,
         complicated: false,
         failed: false,
+        status: "active"
       },
       {
         id: 4,
@@ -104,6 +125,7 @@ const employees = [
         active: false,
         complicated: true,
         failed: true,
+        status: "failed"
       },
       {
         id: 5,
@@ -114,6 +136,7 @@ const employees = [
         active: false,
         complicated: false,
         failed: false,
+        status: "completed"
       },
       {
         id: 6,
@@ -124,6 +147,7 @@ const employees = [
         active: true,
         complicated: false,
         failed: false,
+        status: "active"
       },
     ],
   },
@@ -132,7 +156,12 @@ const employees = [
     firstName: "Vihaan",
     email: "employee3@example.com",
     password: "123",
-    taskCount: 4,
+    taskCounts: {
+      active: 3,      // 1,2,3
+      newTask: 1,     // 1
+      completed: 1,   // 4
+      failed: 0
+    },
     tasks: [
       {
         id: 1,
@@ -143,6 +172,7 @@ const employees = [
         active: true,
         complicated: true,
         failed: false,
+        status: "newTask"
       },
       {
         id: 2,
@@ -153,6 +183,7 @@ const employees = [
         active: true,
         complicated: false,
         failed: false,
+        status: "active"
       },
       {
         id: 3,
@@ -163,6 +194,7 @@ const employees = [
         active: true,
         complicated: false,
         failed: false,
+        status: "active"
       },
       {
         id: 4,
@@ -173,6 +205,7 @@ const employees = [
         active: false,
         complicated: false,
         failed: false,
+        status: "completed"
       },
     ],
   },
@@ -181,7 +214,12 @@ const employees = [
     firstName: "Kabir",
     email: "employee4@example.com",
     password: "123",
-    taskCount: 7,
+    taskCounts: {
+      active: 4,      // 1,2,3,4
+      newTask: 1,     // 1
+      completed: 2,   // 6,7
+      failed: 1       // 5
+    },
     tasks: [
       {
         id: 1,
@@ -192,6 +230,7 @@ const employees = [
         active: true,
         complicated: true,
         failed: false,
+        status: "newTask"
       },
       {
         id: 2,
@@ -202,6 +241,7 @@ const employees = [
         active: true,
         complicated: false,
         failed: false,
+        status: "active"
       },
       {
         id: 3,
@@ -212,6 +252,7 @@ const employees = [
         active: true,
         complicated: false,
         failed: false,
+        status: "active"
       },
       {
         id: 4,
@@ -222,6 +263,7 @@ const employees = [
         active: true,
         complicated: true,
         failed: false,
+        status: "active"
       },
       {
         id: 5,
@@ -232,6 +274,7 @@ const employees = [
         active: false,
         complicated: false,
         failed: true,
+        status: "failed"
       },
       {
         id: 6,
@@ -239,9 +282,10 @@ const employees = [
         description: "Prepare design presentation for client review",
         date: "2026-01-16",
         category: "Design",
-        active: true,
+        active: false,
         complicated: false,
         failed: false,
+        status: "completed"
       },
       {
         id: 7,
@@ -252,6 +296,7 @@ const employees = [
         active: false,
         complicated: false,
         failed: false,
+        status: "completed"
       },
     ],
   },
@@ -260,7 +305,12 @@ const employees = [
     firstName: "Reyansh",
     email: "employee5@example.com",
     password: "123",
-    taskCount: 8,
+    taskCounts: {
+      active: 6,      // 1,2,3,4,5,8
+      newTask: 1,     // 3
+      completed: 1,   // 7
+      failed: 1       // 6
+    },
     tasks: [
       {
         id: 1,
@@ -271,6 +321,7 @@ const employees = [
         active: true,
         complicated: true,
         failed: false,
+        status: "active"
       },
       {
         id: 2,
@@ -281,6 +332,7 @@ const employees = [
         active: true,
         complicated: false,
         failed: false,
+        status: "active"
       },
       {
         id: 3,
@@ -291,6 +343,7 @@ const employees = [
         active: true,
         complicated: true,
         failed: false,
+        status: "newTask"
       },
       {
         id: 4,
@@ -301,6 +354,7 @@ const employees = [
         active: true,
         complicated: true,
         failed: false,
+        status: "active"
       },
       {
         id: 5,
@@ -311,6 +365,7 @@ const employees = [
         active: true,
         complicated: true,
         failed: false,
+        status: "active"
       },
       {
         id: 6,
@@ -321,6 +376,7 @@ const employees = [
         active: false,
         complicated: false,
         failed: true,
+        status: "failed"
       },
       {
         id: 7,
@@ -328,9 +384,10 @@ const employees = [
         description: "Review and update customer support SLA document",
         date: "2026-01-09",
         category: "Support",
-        active: true,
+        active: false,
         complicated: false,
         failed: false,
+        status: "completed"
       },
       {
         id: 8,
@@ -341,6 +398,7 @@ const employees = [
         active: true,
         complicated: false,
         failed: false,
+        status: "active"
       },
     ],
   },
@@ -352,7 +410,12 @@ const Admin = [
     firstName: "Pranav",
     email: "admin@example.com",
     password: "123",
-    taskCount: 4,
+    taskCounts: {
+      active: 4,      // all are active
+      newTask: 1,     // 2 (far future)
+      completed: 0,
+      failed: 0
+    },
     tasks: [
       {
         id: 1,
@@ -363,6 +426,7 @@ const Admin = [
         active: true,
         complicated: true,
         failed: false,
+        status: "active"
       },
       {
         id: 2,
@@ -373,6 +437,7 @@ const Admin = [
         active: true,
         complicated: true,
         failed: false,
+        status: "newTask"
       },
       {
         id: 3,
@@ -383,6 +448,7 @@ const Admin = [
         active: true,
         complicated: false,
         failed: false,
+        status: "active"
       },
       {
         id: 4,
@@ -393,6 +459,7 @@ const Admin = [
         active: true,
         complicated: true,
         failed: false,
+        status: "active"
       },
     ],
   },
