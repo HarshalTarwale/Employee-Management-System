@@ -13,6 +13,7 @@ const App = () => {
   }, [])
 
   const [user, setUser] = useState(null)
+  const [loggedinuserdata, setloggedinuserdata] = useState(null)
   const authData = useContext(AuthContext)
 
   useEffect(() => {
@@ -21,49 +22,41 @@ const App = () => {
       if(loggedinuser){
         const userData = JSON.parse(loggedinuser)
         setUser(userData.role)
+        if(userData.role === 'employee') {
+          setloggedinuserdata(userData.data)
+        }
       }
     }
   }, [authData])
   
 
-  const handlelogin = (email, password) => {
-    console.log('Login attempt:', email)
-    console.log('Auth data:', authData)
-    
-    if(!authData) {
-      alert("Loading data, please wait and try again")
-      return
-    }
-    
-    // Check admin
-    if(authData.admin) {
-      const admin = authData.admin.find((a) => a.email === email && a.password === password)
-      if(admin) {
+ const handlelogin = (email, password) => {
+    if (authData) {
+      // Check if admin
+      const admin = authData.admin.find((a) => email === a.email && a.password === password)
+      if (admin) {
         setUser('admin')
-        localStorage.setItem('loggedinuser', JSON.stringify({role: 'admin'}))
-        console.log('Admin logged in successfully')
+        localStorage.setItem('loggedinuser', JSON.stringify({ role: 'admin' }))
         return
       }
-    }
-    
-    // Check employees
-    if(authData.employee) {
-      const employee = authData.employee.find((e) => e.email === email && e.password === password)
-      if(employee) {
+      
+      // Check if employee
+      const employee = authData.employee.find((e) => email === e.email && e.password === password)
+      if (employee) {
         setUser('employee')
-        localStorage.setItem('loggedinuser', JSON.stringify({role: 'employee'}))
-        console.log('Employee logged in successfully')
+        setloggedinuserdata(employee)
+        localStorage.setItem('loggedinuser', JSON.stringify({ role: 'employee', data: employee }))
         return
       }
     }
     
-    alert("Invalid email or password")
+    alert("Invalid Credentials")
   }
 
   return (
     <>
     {!user ? <Login  handlelogin={handlelogin} />:''}
-    {user == 'admin' ? <AdminDashbord/> : <EmployeeDashbord/>}
+    {user == 'admin' ? <AdminDashbord/> : user == 'employee' ? <EmployeeDashbord data={loggedinuserdata} /> : null}
     </>
   )
 }
