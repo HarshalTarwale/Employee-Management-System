@@ -3,7 +3,7 @@ import React from "react";
 const CreateTask = () => {
   return (
     <div>
-      <div className="text-white flex w-full justify-center mt-[6vh]">
+      <div className="text-white flex w-full justify-center mt-[4vh]">
         <div className="w-[90%] px-10 py-5 bg-zinc-800 flex gap-5 rounded-[16px]">
           <div className="flex flex-col gap-5 w-1/2">
             <h1 className="text-[3vh] font-bold">Create Task</h1>

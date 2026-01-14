@@ -1,32 +1,38 @@
-import React, { useContext } from 'react'
-import { AuthContext } from '../../Contex/AuthProvider'
+import React from 'react'
 
 const AllTask = () => {
 
-  const userData = useContext(AuthContext)
+  
 
   return (
-     <div className='bg-[#1c1c1c] p-5 rounded mt-5'>
-        <div className='bg-red-400 mb-2 py-2 px-4 flex justify-between rounded'>
-            <h2 className='text-lg font-medium w-1/5'>Employee Name</h2>
-            <h3 className='text-lg font-medium w-1/5'>New Task</h3>
-            <h5 className='text-lg font-medium w-1/5'>Active Task</h5>
-            <h5 className='text-lg font-medium w-1/5'>Completed</h5>
-            <h5 className='text-lg font-medium w-1/5'>Failed</h5>
+    <div className='w-full flex justify-center mt-[2vh] flex-1 min-h-0'>
+      <div className='w-[90%] task container bg-zinc-800 px-7 py-5 rounded-[25px] overflow-auto scrollbar-hide h-full'>
+        <div className='bg-yellow-300 mb-2 flex justify-between rounded-[10px] px-5 py-2'>
+            <h2>harshal</h2>
+            <h2>Make a ui design</h2>
+            <h2>Status</h2>
         </div>
-        <div className=''>
-        {userData?.employee?.map(function(elem,idx){
-            return <div key={idx} className='border-2 border-emerald-500 mb-2 py-2 px-4 flex justify-between rounded'>
-            <h2 className='text-lg font-medium  w-1/5'>{elem.firstName}</h2>
-            <h3 className='text-lg font-medium w-1/5 text-blue-400'>{elem.taskCounts.newTask}</h3>
-            <h5 className='text-lg font-medium w-1/5 text-yellow-400'>{elem.taskCounts.active}</h5>
-            <h5 className='text-lg font-medium w-1/5 text-white'>{elem.taskCounts.completed}</h5>
-            <h5 className='text-lg font-medium w-1/5 text-red-600'>{elem.taskCounts.failed}</h5>
+        <div className='bg-red-300 mb-2 flex justify-between rounded-[10px] px-5 py-2'>
+            <h2>harshal</h2>
+            <h2>Make a ui design</h2>
+            <h2>Status</h2>
         </div>
-        })}
+        <div className='bg-green-300 mb-2 flex justify-between rounded-[10px] px-5 py-2'>
+            <h2>harshal</h2>
+            <h2>Make a ui design</h2>
+            <h2>Status</h2>
         </div>
-        
-        
+        <div className='bg-purple-300 mb-2 flex justify-between rounded-[10px] px-5 py-2'>
+            <h2>harshal</h2>
+            <h2>Make a ui design</h2>
+            <h2>Status</h2>
+        </div>
+        <div className='bg-blue-300 mb-2 flex justify-between rounded-[10px] px-5 py-2'>
+            <h2>harshal</h2>
+            <h2>Make a ui design</h2>
+            <h2>Status</h2>
+        </div>
+      </div>
     </div>
   )
 }
