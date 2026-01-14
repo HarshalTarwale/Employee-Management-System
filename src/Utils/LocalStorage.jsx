@@ -1,5 +1,4 @@
-localStorage.clear()
-
+// localStorage.clear()
 
 const employees = [
   {

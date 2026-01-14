@@ -13,7 +13,7 @@ const Login = ({handlelogin}) => {
     console.log("Passaward",password)
   }
   return (
-    <div className="h-screen w-full flex justify-center items-center">
+    <div className="h-screen w-full flex justify-center items-center bg-zinc-900">
       <div className="login bg-zinc-800 rounded-[25px] w-[25%] h-[50%] flex flex-col  items-center py-5 gap-[12%]">
         <h1 className="text-white text-[5vh]">Login</h1>
         <form 
