@@ -465,9 +465,14 @@ const Admin = [
 ];
 
 export const setLocalStorage = () => {
-  localStorage.setItem("employees", JSON.stringify(employees));
-  localStorage.setItem("admin", JSON.stringify(Admin));
-  console.log("Admin data set:", Admin);
+  // Only set if localStorage is empty (first time)
+  if (!localStorage.getItem("employees")) {
+    localStorage.setItem("employees", JSON.stringify(employees));
+  }
+  if (!localStorage.getItem("admin")) {
+    localStorage.setItem("admin", JSON.stringify(Admin));
+  }
+  console.log("LocalStorage initialized");
 };
 
 export const getLocalStorage = () => {

@@ -8,10 +8,6 @@ import { AuthContext } from './Contex/AuthProvider'
 
 const App = () => {
 
-  useEffect(() => {
-    setLocalStorage()
-  }, [])
-
   const [user, setUser] = useState(null)
   const [loggedinuserdata, setloggedinuserdata] = useState(null)
   const authData = useContext(AuthContext)
@@ -22,9 +18,18 @@ const App = () => {
       if(loggedinuser){
         const userData = JSON.parse(loggedinuser)
         setUser(userData.role)
-        // Restore logged in user data for both admin and employee
-        if(userData.data) {
-          setloggedinuserdata(userData.data)
+        
+        // Get fresh data from employees/admin array instead of cached data
+        if(userData.role === 'employee') {
+          const freshEmployee = authData.employee.find(emp => emp.id === userData.data.id)
+          if(freshEmployee) {
+            setloggedinuserdata(freshEmployee)
+          }
+        } else if(userData.role === 'admin') {
+          const freshAdmin = authData.admin.find(adm => adm.id === userData.data.id)
+          if(freshAdmin) {
+            setloggedinuserdata(freshAdmin)
+          }
         }
       }
     }

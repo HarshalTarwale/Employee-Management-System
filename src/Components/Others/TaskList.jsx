@@ -12,10 +12,10 @@ const TaskList = ({data}) => {
       className="flex items-center justify-start gap-5 flex-nowrap w-full overflow-x-auto mt-23">
       {data?.tasks?.map((elem, idx)=>{
         if(elem.status === 'active'){
-          return <AcceptTask key={idx} data={elem}/>
+          return <AcceptTask key={idx} data={elem} employeeId={data.id}/>
         }
         if(elem.status === 'newTask'){
-          return <NewTask key={idx} data={elem}/>
+          return <NewTask key={idx} data={elem} employeeId={data.id}/>
         }
         if(elem.status === 'completed'){
           return <CompleteTask key={idx} data={elem}/>
